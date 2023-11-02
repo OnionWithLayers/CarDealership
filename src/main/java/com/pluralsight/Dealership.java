@@ -72,7 +72,21 @@ public class Dealership {
     public ArrayList<Vehicle> getVehiclesByColor(String color){
         ArrayList<Vehicle> vehicleColor = new ArrayList<>();
         for (int i = 0; i < inventory.size(); i++){
-            
-        }
+            if (inventory.get(i).getColor().equalsIgnoreCase(color)){
+                vehicleColor.add(inventory.get(i));
+            }
+        } return vehicleColor;
     }
+
+    public ArrayList<Vehicle> getVehiclesByMileage(int min, int max){
+        ArrayList<Vehicle> vehicleMileage = new ArrayList<>();
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max){
+                vehicleMileage.add(vehicle);
+            }
+        }
+        return vehicleMileage;
+    }
+
+    
 }

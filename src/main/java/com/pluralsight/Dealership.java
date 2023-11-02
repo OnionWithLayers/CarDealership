@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Dealership {
@@ -88,5 +89,30 @@ public class Dealership {
         return vehicleMileage;
     }
 
+    public ArrayList<Vehicle> getVehiclesByType (String vehicleType){
+        ArrayList<Vehicle> vehiclesByType = new ArrayList<>();
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)){
+                vehiclesByType.add(vehicle);
+            }
+        }
+        return vehiclesByType;
+    }
+
+    public ArrayList<Vehicle> getAllVehicles(){
+        ArrayList<Vehicle> allVehicle = new ArrayList<>();
+        allVehicle.addAll(inventory);
+        return  allVehicle;
+    }
+
+    //idk what to do here
+    public ArrayList<Vehicle> addVehicle(){
+        return null;
+    }
+
+    //idk what to do here either
+    public ArrayList<Vehicle> remove(){
+
+    }
     
 }

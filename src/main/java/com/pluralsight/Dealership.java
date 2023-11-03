@@ -102,52 +102,15 @@ public class Dealership {
     }
 
     public ArrayList<Vehicle> getAllVehicles() {
-        ArrayList<Vehicle> allVehicle = new ArrayList<>();
-        allVehicle.addAll(inventory);
-        return allVehicle;
+        return this.inventory;
     }
 
-    //idk what to do here
-    public void addVehicle() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What's the vin of the vehicle you want to add?");
-        int userVin = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("What's the year of the vehicle: ");
-        int userYear = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("What's the make of the vehicle: ");
-        String userMake = scanner.nextLine();
-
-        System.out.println("What's the model of the vehicle: ");
-        String userModel = scanner.nextLine();
-
-        System.out.println("Whats the vehicle type: ");
-        String userVehicleType = scanner.nextLine();
-
-        System.out.println("What's the Color of the vehicle: ");
-        String userColor = scanner.nextLine();
-
-        System.out.println("What's the odometer for the vehicle: ");
-        int userOdometer = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("What's the price of the vehicle: ");
-        double userPrice = scanner.nextDouble();
-        scanner.nextLine();
-
-        Vehicle userVehicle = new Vehicle(userVin, userYear, userMake, userModel, userVehicleType,
-                userColor, userOdometer, userPrice);
-
-        scanner.close();
-        inventory.add(userVehicle);
+    public void addVehicle(Vehicle vehicle) {
+        this.inventory.add(vehicle);
     }
 
     //idk what to do here either
-    public ArrayList<Vehicle> remove() {
-        System.out.println("What vehicle would you like to remove: ");
+    public void remove() {
 
     }
 

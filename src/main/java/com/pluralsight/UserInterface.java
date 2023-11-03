@@ -57,9 +57,12 @@ public class UserInterface {
 
     }
 
+    public void processAllVehiclesRequest(){
+        displayVehicles(dealership.getAllVehicles());
+    }
     private void displayVehicles(List<Vehicle> listOfVehicles) {
-        for (Vehicle vehicle : listOfVehicles) {
-            System.out.println(vehicle);
+        for (int i = 0; i < listOfVehicles.size(); i++) {
+            System.out.println(listOfVehicles.get(i));
         }
     }
 

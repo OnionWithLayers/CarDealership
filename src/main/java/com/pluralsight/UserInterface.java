@@ -1,11 +1,11 @@
 package com.pluralsight;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
+    Scanner scanner = new Scanner(System.in);
 
     public UserInterface() {
 
@@ -22,31 +22,74 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest() {
+        System.out.println("What's the minimum price you would like to filter by: ");
+        double min = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.println("What's the maximum price you would like to filter to: ");
+        double max = scanner.nextDouble();
+        scanner.nextLine();
+
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        System.out.println(dealershipFileManager.getDealership().getVehiclesByPrice(min, max).toString());
 
     }
 
     public void processGetByMakeModelRequest() {
+        System.out.println("What make is the car you are looking for: ");
+        String make = scanner.nextLine();
 
+        System.out.println("What model is the car you are looking for: ");
+        String model = scanner.nextLine();
+
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        System.out.println(dealershipFileManager.getDealership().getVehiclesByMakeModel(make, model));
     }
 
     public void processGetByYearRequest() {
+        System.out.println("What vehicle year would you like to start the search at: ");
+        int min = scanner.nextInt();
+        scanner.nextLine();
 
+        System.out.println("What vehicle year would you like to end the search at: ");
+        int max = scanner.nextInt();
+        scanner.nextLine();
+
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        System.out.println(dealershipFileManager.getDealership().getVehiclesByYear(min, max));
     }
 
     public void processGetByColorRequest() {
+        System.out.println("What color is the car you're looking for: ");
+        String color = scanner.nextLine();
 
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        System.out.println(dealershipFileManager.getDealership().getVehiclesByColor(color));
     }
 
     public void processGetByMileageRequest() {
+        System.out.println("What's the minimum mileage of the car you're looking for: ");
+        int min = scanner.nextInt();
+        scanner.nextLine();
 
+        System.out.println("What's the maximum mileage of the car you're looking for: ");
+        int max = scanner.nextInt();
+        scanner.nextLine();
+
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        System.out.println(dealershipFileManager.getDealership().getVehiclesByMileage(min, max));
     }
 
     public void processGetByVehicleTypeRequest() {
+        System.out.println("What's the type of the vehicle you're looking for: ");
+        String type = scanner.nextLine();
 
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        System.out.println(dealershipFileManager.getDealership().getVehiclesByType(type));
     }
 
     public void processGetAllVehicleRequest() {
-
+        System.out.println(dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {
@@ -57,9 +100,10 @@ public class UserInterface {
 
     }
 
-    public void processAllVehiclesRequest(){
+    public void processAllVehiclesRequest() {
         displayVehicles(dealership.getAllVehicles());
     }
+
     private void displayVehicles(List<Vehicle> listOfVehicles) {
         for (int i = 0; i < listOfVehicles.size(); i++) {
             System.out.println(listOfVehicles.get(i));
@@ -67,7 +111,6 @@ public class UserInterface {
     }
 
     public void displayMenu() {
-        Scanner scanner = new Scanner(System.in);
 
         boolean running = true;
         while (running) {
@@ -125,4 +168,6 @@ public class UserInterface {
             }
         }
     }
+
+
 }

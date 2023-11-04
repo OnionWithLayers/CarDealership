@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Dealership {
     private String name;
@@ -110,8 +108,16 @@ public class Dealership {
     }
 
     //idk what to do here either
-    public void remove() {
-
+    public void remove(Vehicle vehicle) {
+        this.inventory.remove(vehicle);
     }
 
+    @Override
+    public String toString() {
+        return "Dealership{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

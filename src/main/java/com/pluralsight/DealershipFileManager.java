@@ -18,7 +18,7 @@ public class DealershipFileManager {
                 //make an array, and split each part of the line into parts sectioned off by '|' PIPES
                 String[] parts = line.split("\\|");
                 if (lineNumber == 1) {
-                    //assign each part in the array to a seperate String
+                    //assign each part in the array to a separate String
                     String name = parts[0];
                     //set the String made to its corresponding part
                     dealership.setName(name);

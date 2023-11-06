@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class DealershipFileManager {
     public Dealership getDealership() {
@@ -12,7 +9,7 @@ public class DealershipFileManager {
         int lineNumber = 1;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("dealership.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("inventory.csv"));
             while ((line = br.readLine()) != null) {
 
                 //make an array, and split each part of the line into parts sectioned off by '|' PIPES
@@ -56,6 +53,23 @@ public class DealershipFileManager {
 
 
     public void saveDealership(Dealership dealership){
+        try {
+            //accesses the file "transactions.csv"   append: true makes it so you can on to the file, if nothing is there, it'll default to false and rewirte the file
+            //writes in the file
+            BufferedWriter buffWriter = new BufferedWriter(new FileWriter("inventory.csv"));
+            //turn the transaction to a string, so I can add it to the file
 
+
+
+            String saveDealership = "\n" + dealership.inventory;
+            //write into the file
+            buffWriter.write(saveDealership);
+            //close the writer so the info saves
+            buffWriter.close();
+
+        } catch (IOException e) {
+            System.out.println("Oops. Failed to save data");
+            e.printStackTrace();
+        }
     }
 }

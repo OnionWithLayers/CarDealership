@@ -125,7 +125,7 @@ public class UserInterface {
 
             System.out.println("Alright, new vehicle added! I hope you think that this was responsible");
 
-            
+
         } catch (Exception exception) {
             System.out.println("Bro tell me the info I'm asking you. Now we gotta start over.");
         }
@@ -174,7 +174,7 @@ public class UserInterface {
         }
     }
 
-    public void processGetAllVehiclesRequest() {
+    public void processAllVehiclesRequest() {
         displayVehicles(dealership.getAllVehicles());
     }
 
@@ -226,7 +226,7 @@ public class UserInterface {
                     processGetByVehicleTypeRequest();
                     break;
                 case "7":
-                    processGetAllVehiclesRequest();
+                    processAllVehiclesRequest();
                     break;
                 case "8":
                     processAddVehicleRequest();

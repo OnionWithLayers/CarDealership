@@ -107,7 +107,6 @@ public class Dealership {
         this.inventory.add(vehicle);
     }
 
-    //idk what to do here either
     public void remove(Vehicle vehicle) {
         this.inventory.remove(vehicle);
     }

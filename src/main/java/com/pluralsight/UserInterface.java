@@ -84,22 +84,97 @@ public class UserInterface {
         System.out.println("What's the type of the vehicle you're looking for: ");
         String type = scanner.nextLine();
 
-       
+        List<Vehicle> vehicleType = dealership.getVehiclesByType(type);
+        displayVehicles(vehicleType);
     }
 
-    public void processGetAllVehicleRequest() {
-        System.out.println(dealership.getAllVehicles());
-    }
 
     public void processAddVehicleRequest() {
+        System.out.println("Oooooh a new vehicle, huh. Aight, just give me the info for it");
+        try {
+            System.out.println("So what's the vin?");
+            int vin = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Mhm, now the year");
+            int year = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Alright, now the juicy part. What's the make?");
+            String make = scanner.nextLine();
+
+            System.out.println("Nice. Now the model?");
+            String model = scanner.nextLine();
+
+            System.out.println("Now gimme the vehicle type: ");
+            String vehicleType = scanner.nextLine();
+
+            System.out.println("What color is it?");
+            String color = scanner.nextLine();
+
+            System.out.println("What's the odometer?");
+            int odometer = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("And how much was it?");
+            double price = scanner.nextInt();
+            scanner.nextLine();
+
+            Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+            dealership.addVehicle(vehicle);
+
+            System.out.println("Alright, new vehicle added! I hope you think that this was responsible");
+
+            
+        } catch (Exception exception) {
+            System.out.println("Bro tell me the info I'm asking you. Now we gotta start over.");
+        }
+
 
     }
 
     public void processRemoveVehicleRequest() {
+        System.out.println("*Sighs* So you gotta remove a vehicle because you can't afford it right? I don't know" +
+                "why you do this in the first place. Alright, give me the full information so there's no mistake");
+        try {
+            System.out.println("So what's the vin?");
+            int vin = scanner.nextInt();
+            scanner.nextLine();
 
+            System.out.println("Mhm, now the year");
+            int year = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Okay so what's the make?");
+            String make = scanner.nextLine();
+
+            System.out.println("Now the model?");
+            String model = scanner.nextLine();
+
+            System.out.println("Now gimme the vehicle type: ");
+            String vehicleType = scanner.nextLine();
+
+            System.out.println("What color is it?");
+            String color = scanner.nextLine();
+
+            System.out.println("What's the odometer?");
+            int odometer = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("And how much was it?");
+            double price = scanner.nextInt();
+            scanner.nextLine();
+
+            Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+            dealership.remove(vehicle);
+
+            System.out.println("Alright, it's out of my system. Be more responsible next time.");
+        } catch (Exception exception) {
+            System.out.println("Bro tell me the info I'm asking you. Now we gotta start over.");
+        }
     }
 
-    public void processAllVehiclesRequest() {
+    public void processGetAllVehiclesRequest() {
         displayVehicles(dealership.getAllVehicles());
     }
 
@@ -151,7 +226,7 @@ public class UserInterface {
                     processGetByVehicleTypeRequest();
                     break;
                 case "7":
-                    processGetAllVehicleRequest();
+                    processGetAllVehiclesRequest();
                     break;
                 case "8":
                     processAddVehicleRequest();

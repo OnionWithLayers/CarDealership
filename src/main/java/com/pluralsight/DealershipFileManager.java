@@ -53,12 +53,27 @@ public class DealershipFileManager {
 
 
     public void saveDealership(Dealership dealership){
+
         try {
             //accesses the file "transactions.csv"   append: true makes it so you can on to the file, if nothing is there, it'll default to false and rewirte the file
             //writes in the file
             BufferedWriter buffWriter = new BufferedWriter(new FileWriter("inventory.csv"));
             //turn the transaction to a string, so I can add it to the file
-
+            buffWriter.write(dealership + "\n");
+            buffWriter.close();
+            try {
+                BufferedWriter bufferWriter = new BufferedWriter(new FileWriter("inventory.csv", true));
+                for(Vehicle vehicle : dealership.getAllVehicles()){
+                    String stringFormat = vehicle.getVin() + "|" + vehicle.getYear() + "|" + vehicle.getMake()
+                            + "|" + vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor()
+                            + "|" + vehicle.getOdometer() + "|" + vehicle.getPrice();
+                    bufferWriter.write(stringFormat);
+                }
+                bufferWriter.close();
+            }catch (IOException exception){
+                System.out.println(exception);
+                System.out.println("Oooooh. Looks like something went wrong.");
+            }
 
 
             String saveDealership = "\n" + dealership.inventory;

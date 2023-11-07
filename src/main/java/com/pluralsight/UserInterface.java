@@ -263,7 +263,6 @@ public class UserInterface {
                 case "99":
                     System.out.println("Fine, be that way T^T");
                     running = false;
-                    break;
                 default:
                     break;
             }

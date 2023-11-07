@@ -22,70 +22,96 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest() {
-        System.out.println("What's the minimum price you would like to filter by: ");
-        double min = scanner.nextDouble();
-        scanner.nextLine();
+        try {
+            System.out.println("What's the minimum price you would like to filter by: ");
+            double min = scanner.nextDouble();
+            scanner.nextLine();
 
-        System.out.println("What's the maximum price you would like to filter to: ");
-        double max = scanner.nextDouble();
-        scanner.nextLine();
+            System.out.println("What's the maximum price you would like to filter to: ");
+            double max = scanner.nextDouble();
+            scanner.nextLine();
 
-        List<Vehicle> vehicles = dealership.getVehiclesByPrice(min, max);
-        displayVehicles(vehicles);
-
+            List<Vehicle> vehicles = dealership.getVehiclesByPrice(min, max);
+            displayVehicles(vehicles);
+        } catch (Exception e) {
+            System.out.println("Oops, try again");
+        }
     }
 
     public void processGetByMakeModelRequest() {
-        System.out.println("What make is the car you are looking for: ");
-        String make = scanner.nextLine();
+        try {
+            System.out.println("What make is the car you are looking for: ");
+            String make = scanner.nextLine();
 
-        System.out.println("What model is the car you are looking for: ");
-        String model = scanner.nextLine();
+            System.out.println("What model is the car you are looking for: ");
+            String model = scanner.nextLine();
 
-        List<Vehicle> vehicleMakeModel = dealership.getVehiclesByMakeModel(make, model);
-        displayVehicles(vehicleMakeModel);
+            List<Vehicle> vehicleMakeModel = dealership.getVehiclesByMakeModel(make, model);
+            displayVehicles(vehicleMakeModel);
+        }catch (Exception e){
+            System.out.println("Failed. Work on it again");
+        }
     }
 
     public void processGetByYearRequest() {
-        System.out.println("What vehicle year would you like to start the search at: ");
-        int min = scanner.nextInt();
-        scanner.nextLine();
+        try{
+            System.out.println("What vehicle year would you like to start the search at: ");
+            int min = scanner.nextInt();
+            scanner.nextLine();
 
-        System.out.println("What vehicle year would you like to end the search at: ");
-        int max = scanner.nextInt();
-        scanner.nextLine();
+            System.out.println("What vehicle year would you like to end the search at: ");
+            int max = scanner.nextInt();
+            scanner.nextLine();
 
-        List<Vehicle> vehicleYear = dealership.getVehiclesByYear(min, max);
-        displayVehicles(vehicleYear);
+            List<Vehicle> vehicleYear = dealership.getVehiclesByYear(min, max);
+            displayVehicles(vehicleYear);
+        }catch (Exception e){
+            System.out.println("This didn't work out. Try again");
+        }
     }
 
     public void processGetByColorRequest() {
-        System.out.println("What color is the car you're looking for: ");
-        String color = scanner.nextLine();
+        try {
+            System.out.println("What color is the car you're looking for: ");
+            String color = scanner.nextLine();
 
-        List<Vehicle> vehicleColor = dealership.getVehiclesByColor(color);
-        displayVehicles(vehicleColor);
+            List<Vehicle> vehicleColor = dealership.getVehiclesByColor(color);
+            displayVehicles(vehicleColor);
+        } catch (Exception e){
+            System.out.println("Hmm, looks like something went wrong. Maybe try again?");
+        }
+
     }
 
     public void processGetByMileageRequest() {
-        System.out.println("What's the minimum mileage of the car you're looking for: ");
-        int min = scanner.nextInt();
-        scanner.nextLine();
+        try {
+            System.out.println("What's the minimum mileage of the car you're looking for: ");
+            int min = scanner.nextInt();
+            scanner.nextLine();
 
-        System.out.println("What's the maximum mileage of the car you're looking for: ");
-        int max = scanner.nextInt();
-        scanner.nextLine();
+            System.out.println("What's the maximum mileage of the car you're looking for: ");
+            int max = scanner.nextInt();
+            scanner.nextLine();
 
-        List<Vehicle> vehicleMileage = dealership.getVehiclesByMileage(min, max);
-        displayVehicles(vehicleMileage);
+            List<Vehicle> vehicleMileage = dealership.getVehiclesByMileage(min, max);
+            displayVehicles(vehicleMileage);
+        } catch (Exception e) {
+            System.out.println("Looks like you did something wrong. Start over.");
+
+        }
     }
 
     public void processGetByVehicleTypeRequest() {
-        System.out.println("What's the type of the vehicle you're looking for: ");
-        String type = scanner.nextLine();
+        try {
+            System.out.println("What's the type of the vehicle you're looking for: ");
+            String type = scanner.nextLine();
 
-        List<Vehicle> vehicleType = dealership.getVehiclesByType(type);
-        displayVehicles(vehicleType);
+            List<Vehicle> vehicleType = dealership.getVehiclesByType(type);
+            displayVehicles(vehicleType);
+        } catch (Exception e) {
+            System.out.println("hm");
+        }
+
     }
 
 
@@ -126,7 +152,7 @@ public class UserInterface {
             System.out.println("Alright, new vehicle added! I hope you think that this was responsible");
 
 
-        } catch (Exception exception) {
+        } catch (Exception e) {
             System.out.println("Bro tell me the info I'm asking you. Now we gotta start over.");
         }
 
@@ -134,7 +160,7 @@ public class UserInterface {
     }
 
     public void processRemoveVehicleRequest() {
-        System.out.println("*Sighs* So you gotta remove a vehicle because you can't afford it right? I don't know" +
+        System.out.println("*Sigh* So you gotta remove a vehicle because you can't afford it right? I don't know" +
                 "why you do this in the first place. Alright, give me the full information so there's no mistake");
         try {
             System.out.println("So what's the vin?");
@@ -188,7 +214,7 @@ public class UserInterface {
 
         boolean running = true;
         while (running) {
-            System.out.println("Da Dealership < ( + . + < )");
+            System.out.println("\nDa Dealership < ( + . + < )");
             System.out.println("What do you wanna do, bud?");
             System.out.println("1) Find vehicles within a price range");
             System.out.println("2) Find vehicles by make");
@@ -237,10 +263,12 @@ public class UserInterface {
                 case "99":
                     System.out.println("Fine, be that way T^T");
                     running = false;
+                    break;
                 default:
                     break;
             }
         }
+        scanner.close();
     }
 
     @Override

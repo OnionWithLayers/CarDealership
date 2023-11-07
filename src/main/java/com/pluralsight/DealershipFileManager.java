@@ -70,8 +70,7 @@ public class DealershipFileManager {
                     bufferWriter.write(stringFormat);
                 }
                 bufferWriter.close();
-            }catch (IOException exception){
-                System.out.println(exception);
+            }catch (Exception exception){
                 System.out.println("Oooooh. Looks like something went wrong.");
             }
 

@@ -25,7 +25,6 @@ public class UserInterface {
         try {
             System.out.println("What's the minimum price you would like to filter by: ");
             double min = scanner.nextDouble();
-            scanner.nextLine();
 
             System.out.println("What's the maximum price you would like to filter to: ");
             double max = scanner.nextDouble();
@@ -34,6 +33,7 @@ public class UserInterface {
             List<Vehicle> vehicles = dealership.getVehiclesByPrice(min, max);
             displayVehicles(vehicles);
         } catch (Exception e) {
+            scanner.nextLine();
             System.out.println("Oops, try again");
         }
     }
@@ -57,7 +57,6 @@ public class UserInterface {
         try{
             System.out.println("What vehicle year would you like to start the search at: ");
             int min = scanner.nextInt();
-            scanner.nextLine();
 
             System.out.println("What vehicle year would you like to end the search at: ");
             int max = scanner.nextInt();
@@ -66,6 +65,7 @@ public class UserInterface {
             List<Vehicle> vehicleYear = dealership.getVehiclesByYear(min, max);
             displayVehicles(vehicleYear);
         }catch (Exception e){
+            scanner.nextLine();
             System.out.println("This didn't work out. Try again");
         }
     }
@@ -87,7 +87,6 @@ public class UserInterface {
         try {
             System.out.println("What's the minimum mileage of the car you're looking for: ");
             int min = scanner.nextInt();
-            scanner.nextLine();
 
             System.out.println("What's the maximum mileage of the car you're looking for: ");
             int max = scanner.nextInt();
@@ -96,6 +95,7 @@ public class UserInterface {
             List<Vehicle> vehicleMileage = dealership.getVehiclesByMileage(min, max);
             displayVehicles(vehicleMileage);
         } catch (Exception e) {
+            scanner.nextLine();
             System.out.println("Looks like you did something wrong. Start over.");
 
         }
@@ -153,6 +153,7 @@ public class UserInterface {
 
 
         } catch (Exception e) {
+            scanner.nextLine();
             System.out.println("Bro tell me the info I'm asking you. Now we gotta start over.");
         }
 
@@ -165,7 +166,6 @@ public class UserInterface {
         try {
             System.out.println("So what's the vin?");
             int vin = scanner.nextInt();
-            scanner.nextLine();
 
             System.out.println("Mhm, now the year");
             int year = scanner.nextInt();
@@ -185,7 +185,6 @@ public class UserInterface {
 
             System.out.println("What's the odometer?");
             int odometer = scanner.nextInt();
-            scanner.nextLine();
 
             System.out.println("And how much was it?");
             double price = scanner.nextInt();
@@ -196,6 +195,7 @@ public class UserInterface {
 
             System.out.println("Alright, it's out of my system. Be more responsible next time.");
         } catch (Exception exception) {
+            scanner.nextLine();
             System.out.println("Bro tell me the info I'm asking you. Now we gotta start over.");
         }
     }
